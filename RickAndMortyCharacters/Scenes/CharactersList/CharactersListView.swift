@@ -11,6 +11,9 @@ struct CharactersListView: View {
                 } label: {
                     listItem(item, index: index)
                 }
+                .onAppear {
+                    viewModel.fetchNextPageIfNeeded(itemIndex: index)
+                }
             }
             
             if viewModel.isLoading {
@@ -30,9 +33,6 @@ struct CharactersListView: View {
                 }
                     .frame(width: 30, height: 30)
                 Text(item.name)
-                    .onAppear {
-                        viewModel.fetchNextPageIfNeeded(itemIndex: index)
-                    }
             }
             
             Text("\(item.status.rawValue) - \(item.species)")
