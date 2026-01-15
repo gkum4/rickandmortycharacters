@@ -9,7 +9,7 @@ protocol CharactersListServicing {
 final class CharactersListService {
     private let api: ApiProtocol
     
-    init(api: ApiProtocol) {
+    init(api: ApiProtocol = Api()) {
         self.api = api
     }
 }

@@ -16,7 +16,7 @@ struct Character: Decodable, Equatable {
 }
 
 extension Character {
-    enum Status: String, Decodable {
+    enum Status: String, Decodable, CaseIterable {
         case alive = "Alive"
         case dead = "Dead"
         case unknown
