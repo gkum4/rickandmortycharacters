@@ -1,17 +1,6 @@
 import SwiftUI
 
-protocol CharactersListViewModeling: ObservableObject {
-    var viewState: CharactersListViewState { get }
-    var characters: [Character] { get }
-    var isLoading: Bool { get }
-    var searchText: String { get set }
-    var filterStatus: Character.Status? { get set }
-    
-    func fetchCharacters()
-    func fetchNextPageIfNeeded(itemIndex: Int)
-}
-
-final class CharactersListViewModel {
+final class CharactersListViewModel: ObservableObject {
     @Published private(set) var viewState: CharactersListViewState = .content
     @Published private(set) var characters: [Character] = []
     @Published private(set) var isLoading: Bool = false
@@ -41,7 +30,7 @@ final class CharactersListViewModel {
     }
 }
 
-extension CharactersListViewModel: CharactersListViewModeling {
+extension CharactersListViewModel {
     func fetchCharacters() {
         let searchParams = makeSearchParams()
         
