@@ -1,0 +1,68 @@
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+# Icon must end with two \r
+Icon
+# Thumbnails
+._*
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+### Xcode ###
+# Build generated
+build/
+DerivedData/
+
+# Xcode temporary files
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+# Xcode schemes
+*.xcscheme
+!default.xcscheme
+# .xcscheme files can be committed if the scheme is shared
+
+# Swift Package Manager
+.swiftpm/
+Package.resolved
+
+# CocoaPods
+# It is recommended to not check in the Pods directory
+Pods/
+# But if you choose to, use the following line instead of the above:
+# !Pods/
+
+# Carthage
+Carthage/Build/
+
+# Xcode workspace
+#.xcworkspace # generally, workspaces should be committed
+# !default.xcworkspace
+
+# Generated files
+*.gcno
+*.gcda
+*.gcov
+*.profkp
+*.profout
+*.coverage
+*.moved-aside
+*.xccoverage
+
+### Optional: if you don't want to track specific user settings ###
+# userinterface.internal
+# *.xcuserstate
