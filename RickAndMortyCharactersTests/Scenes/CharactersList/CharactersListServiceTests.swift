@@ -17,13 +17,16 @@ private extension CharactersListServiceTests {
 struct CharactersListServiceTests {
     @Test
     func getCharacters_ShouldUsePageInEndpointParametersAndReturnApiResult() async throws {
+        // Given
         let args = makeSUT()
         let response = CharactersResponse.fixture()
         args.apiSpy.executeResult = .success(response)
         let searchParams = CharactersListSearchParams(page: 3, name: "Rick", status: .alive)
         
+        // When
         let result = await args.sut.getCharacters(searchParams: searchParams)
         
+        // Then
         let executeInvocation = try #require(args.apiSpy.executeInvocations.first)
         #expect(executeInvocation.endpoint.parameters["page"] == String(searchParams.page))
         #expect(executeInvocation.endpoint.parameters["name"] == searchParams.name)
