@@ -20,12 +20,14 @@ struct CharactersListServiceTests {
         let args = makeSUT()
         let response = CharactersResponse.fixture()
         args.apiSpy.executeResult = .success(response)
-        let page = 3
+        let searchParams = CharactersListSearchParams(page: 3, name: "Rick", status: .alive)
         
-        let result = await args.sut.getCharacters(page: page)
+        let result = await args.sut.getCharacters(searchParams: searchParams)
         
         let executeInvocation = try #require(args.apiSpy.executeInvocations.first)
-        #expect(executeInvocation.endpoint.parameters["page"] == String(page))
+        #expect(executeInvocation.endpoint.parameters["page"] == String(searchParams.page))
+        #expect(executeInvocation.endpoint.parameters["name"] == searchParams.name)
+        #expect(executeInvocation.endpoint.parameters["status"] == searchParams.status?.rawValue)
         guard case .success(let resultResponse) = result else {
             Issue.record("Result must be success")
             return

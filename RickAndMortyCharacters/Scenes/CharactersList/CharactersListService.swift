@@ -3,7 +3,7 @@ import Foundation
 typealias GetCharactersResult = Result<CharactersResponse, ApiError>
 
 protocol CharactersListServicing {
-    func getCharacters(page: Int) async -> GetCharactersResult
+    func getCharacters(searchParams params: CharactersListSearchParams) async -> GetCharactersResult
 }
 
 final class CharactersListService {
@@ -15,8 +15,8 @@ final class CharactersListService {
 }
 
 extension CharactersListService: CharactersListServicing {
-    func getCharacters(page: Int) async -> GetCharactersResult {
-        let endpoint = CharactersListEndpoint.getCharacters(page: page)
+    func getCharacters(searchParams params: CharactersListSearchParams) async -> GetCharactersResult {
+        let endpoint = CharactersListEndpoint.getCharacters(params: params)
         return await api.execute(endpoint: endpoint)
     }
 }
