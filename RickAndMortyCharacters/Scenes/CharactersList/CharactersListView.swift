@@ -6,7 +6,11 @@ struct CharactersListView: View {
     var contentState: some View {
         List {
             ForEach(Array(viewModel.characters.enumerated()), id: \.element.id) { index, item in
-                listItem(item, index: index)
+                NavigationLink {
+                    CharacterDetailsView(id: item.id)
+                } label: {
+                    listItem(item, index: index)
+                }
             }
             
             if viewModel.isLoading {
